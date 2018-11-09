@@ -26,13 +26,7 @@ $("textarea").keypress(function(event) {
     let input = $(".text").val();
     $(".text").val("");
     if (input.trim() !== "") {
-      put.append(
-        '<div class="code" style="background-color:' +
-          bg +
-          '">' +
-          input +
-          '<span id="close">×</span></div>'
-      );
+      put.append(`<div class="code" style="background-color:${bg};">${input}<span id="close">×</span></div>`);
       if (bg == "#f2f2b0") {
         bg = "#eec2c2";
       } else {
