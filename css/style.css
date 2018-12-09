@@ -72,10 +72,10 @@ footer{
 }
 @media (max-width: 600px) {
   #container {
-    width: 100%;
+    width: 95%;
   }
   .out{
-    width: 100%;
+    width: 95%;
   }
 
 }
