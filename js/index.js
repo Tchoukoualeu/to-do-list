@@ -1,15 +1,33 @@
 let put = $(".put");
 let bg = "#eec2c2";
+let list = [];
+let stor;
 
-//Delete task
-put.on("click", "span", function(event) {
-  $(this)
-    .parent()
-    .fadeOut(350, function() {
-      $(this).remove();
-    });
-  event.stopPropagation();
-});
+if(localStorage.getItem('list')){
+  localStorage.getItem('list').split(',').map((e) => {
+    put.append(`<div class="code" style="background-color:${bg};">${e}<span id="close" onclick ="deleted(this)">×</span></div>`);
+    if (bg == "#f2f2b0") {
+      bg = "#eec2c2";
+    } else {
+      bg = "#f2f2b0";
+    }
+  })
+}
+
+// JS delete function
+const deleted = (e) => {
+  setTimeout(() => {
+    e.parentElement.style.display = 'none';
+  }, 1000);
+  e.parentElement.className = 'animated bounceOutLeft';
+  list = localStorage.getItem('list').split(',');
+  // list.pop();
+  // localStorage.setItem('list', list);
+  // var index = list.indexOf(5);
+  // if (index > -1) {
+  //   array.splice(index, 1);
+  // }
+}
 
 //Eliminate task when completed
 put.on("click", ".code", function() {
@@ -26,12 +44,14 @@ $("textarea").keypress(function(event) {
     let input = $(".text").val();
     $(".text").val("");
     if (input.trim() !== "") {
-      put.append(`<div class="code" style="background-color:${bg};">${input}<span id="close">×</span></div>`);
+      put.append(`<div class="code" style="background-color:${bg};">${input}<span id="close" onclick ="deleted(this)">×</span></div>`);
       if (bg == "#f2f2b0") {
         bg = "#eec2c2";
       } else {
         bg = "#f2f2b0";
       }
+      list.push(input)
+      localStorage.setItem('list', list)
     }
   }
 });
