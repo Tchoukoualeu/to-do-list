@@ -50,7 +50,7 @@ $("textarea").keypress(function(event) {
       } else {
         bg = "#f2f2b0";
       }
-      list.push(input)
+      list.push(input.trim())
       localStorage.setItem('list', list)
     }
   }
