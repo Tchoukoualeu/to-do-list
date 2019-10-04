@@ -3,6 +3,7 @@ let bg = "#eec2c2";
 let list = [];
 let stor;
 
+//Get previous task list from the browser localstorage if they exist
 if(localStorage.getItem('list')){
   localStorage.getItem('list').split(',').map((e) => {
     put.append(`<div class="code" style="background-color:${bg};">${e}<span id="close" onclick ="deleted(this)">×</span></div>`);
@@ -50,6 +51,8 @@ $("textarea").keypress(function(event) {
       } else {
         bg = "#f2f2b0";
       }
+
+      // Save each entry in the localStorage
       list.push(input.trim())
       localStorage.setItem('list', list)
     }
