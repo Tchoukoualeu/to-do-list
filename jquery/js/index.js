@@ -1,10 +1,11 @@
+// Mostly written in jquery
 let put = $(".put");
 let bg = "#eec2c2";
 let list = [];
 let stor;
 
 //Get previous task list from the browser localstorage if they exist
-if(localStorage.getItem('list')){
+if (localStorage.getItem('list')) {
   localStorage.getItem('list').split(',').map((e) => {
     put.append(`<div class="code" style="background-color:${bg};">${e}<span id="close" onclick ="deleted(this)">×</span></div>`);
     if (bg == "#f2f2b0") {
@@ -22,25 +23,19 @@ const deleted = (e) => {
   }, 1000);
   e.parentElement.className = 'animated bounceOutLeft';
   list = localStorage.getItem('list').split(',');
-  // list.pop();
-  // localStorage.setItem('list', list);
-  // var index = list.indexOf(5);
-  // if (index > -1) {
-  //   array.splice(index, 1);
-  // }
 }
 
 //Eliminate task when completed
-put.on("click", ".code", function() {
-  if($(this).css("text-decoration-line") == "line-through"){
+put.on("click", ".code", function () {
+  if ($(this).css("text-decoration-line") == "line-through") {
     $(this).css("text-decoration-line", "none");
-  }else{
+  } else {
     $(this).css("text-decoration-line", "line-through");
   }
 });
 
 //Add a task
-$("textarea").keypress(function(event) {
+$("textarea").keypress(function (event) {
   if (event.which === 13) {
     let input = $(".text").val();
     $(".text").val("");

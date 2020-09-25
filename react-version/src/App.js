@@ -22,7 +22,6 @@ const Dummy = [
 
 ]
 
-
 const App = () => {
   const [tasks, setTasks] = useState(Dummy);
 
