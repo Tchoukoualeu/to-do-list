@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Task from './components/task';
+import TextInput from './components/textinput';
 
 const Dummy = [
   {
@@ -90,7 +91,7 @@ const App = () => {
               <Task {...item} key={index} crossOut={crossOut.bind(this, index)} deleteTask={deleteTask.bind(this, index)} />
             ))}
           </div>
-          <textarea placeholder="What do you need to do?" className="text" value={value} onChange={(e) => setValue(e.target.value)} onKeyPress={handleKeyPress}></textarea>
+          <TextInput value={value} handleChange={(e) => setValue(e.target.value)} handleKeyPress={handleKeyPress} />
         </div>
       </div>
       <footer>
