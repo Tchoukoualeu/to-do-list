@@ -88,7 +88,12 @@ const App = () => {
           <h1>To-Do List</h1>
           <div className="put">
             {tasks.map((item, index) => (
-              <Task {...item} key={index} crossOut={crossOut.bind(this, index)} deleteTask={deleteTask.bind(this, index)} />
+              <Task
+                {...item}
+                key={index}
+                crossOut={crossOut.bind(this, index)}
+                deleteTask={deleteTask.bind(this, index)}
+              />
             ))}
           </div>
           <TextInput value={value} handleChange={(e) => setValue(e.target.value)} handleKeyPress={handleKeyPress} />
